@@ -1,0 +1,129 @@
+.planning {
+    overflow-x: auto;
+}
+
+.emploi-du-temps {
+    display: grid;
+    grid-template-columns: 5.5rem repeat(6, minmax(0, 1fr));
+}
+
+.day-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .15rem;
+    height: 2.75rem;
+    border-bottom: 1px solid var(--bs-border-color);
+    background-color: var(--bs-body-bg);
+    color: #655749;
+    line-height: 1.15;
+}
+
+.day-name {
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.day-date {
+    font-size: .65rem;
+    font-weight: 400;
+}
+
+.heures {
+    --hour-height: 3.75rem;
+    display: grid;
+    grid-template-rows: repeat(11, var(--hour-height));
+    background-color: var(--bs-body-bg);
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0 calc(var(--hour-height) - 1px),
+        var(--bs-border-color) calc(var(--hour-height) - 1px) var(--hour-height)
+    );
+}
+
+.heure {
+    padding: .5rem;
+    text-align: center;
+    font-size: .875rem;
+}
+
+.partie_jour {
+    margin: .2rem;
+    padding: .35rem;
+    border: 1px solid;
+    border-radius: .6rem;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+    overflow: auto;
+}
+
+.bloc-entete {
+    gap: .25rem;
+    margin-bottom: .15rem;
+    font-size: .65rem;
+    white-space: nowrap;
+}
+
+.type {
+    color: #8a4300;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.horaire,
+.bloc-detail {
+    color: #655749;
+}
+
+.nom_module {
+    font-size: .8rem;
+}
+
+.bloc-detail {
+    font-size: .7rem;
+}
+
+.cours {
+    background-color: #fdf5e9;
+    border-color: #efc5a2;
+}
+
+.tpe {
+    background-color: #f5efe2;
+    border-color: #e2d4b6;
+}
+
+.morning {
+    grid-row: 1 / 5;
+}
+
+.afternoon {
+    grid-row: 8 / 12;
+}
+
+@media (max-width: 991.98px) {
+    .planning {
+        --largeur-horaires: 4.5rem;
+        container-type: inline-size;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline-start: var(--largeur-horaires);
+    }
+
+    .emploi-du-temps {
+        width: max-content;
+        grid-template-columns: var(--largeur-horaires) repeat(6, calc(100cqw - var(--largeur-horaires)));
+    }
+
+    .emploi-du-temps > .jour:first-child {
+        position: sticky;
+        inset-inline-start: 0;
+        z-index: 1;
+    }
+
+    .emploi-du-temps > section {
+        scroll-snap-align: start;
+    }
+}
